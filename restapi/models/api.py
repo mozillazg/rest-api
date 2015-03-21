@@ -32,6 +32,7 @@ class Api(db.Model, SessionMixin):
 
     title = db.Column(db.String(100), nullable=False)
     url = db.Column(db.String(200), nullable=False)
+    verb = db.Column(db.String(7), default='GET', doc='HTTP Method')
     arguments = db.Column(JSON)
     status_code = db.Column(db.Integer, default=200)
     headers = db.Column(JSON)
