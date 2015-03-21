@@ -1,5 +1,6 @@
 Flask
 Flask-Admin
+Flask-Migrate
 flask-restful
 Flask-Script
 Flask-SQLAlchemy

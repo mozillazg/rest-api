@@ -8,7 +8,8 @@ import os
 from flask import Flask
 from flask.ext.admin.contrib.sqla import ModelView
 
-from .ext import admin, db
+from .ext import admin, db, migrate
+from .models.api import Project, Api
 
 
 def create_app(config=None):
@@ -45,6 +46,7 @@ def register_hooks(app):
 def register_db(app):
     db.init_app(app)
     db.app = app
+    migrate.init_app(app, db)
 
 
 def register_db_events(app):
@@ -55,8 +57,8 @@ def regisetr_admin(app):
     MyModelView = type(str("MyModelView"), (ModelView,), {})
     MyModelView.column_display_pk = True
     MyModelView.column_default_sort = ('id', True)
-    # admin.add_view(MyModelView(APP, db))
-    # admin.add_view(MyModelView(API, db))
+    admin.add_view(MyModelView(Project, db.session))
+    admin.add_view(MyModelView(Api, db.session))
 
     admin.init_app(app)
 

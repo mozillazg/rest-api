@@ -4,6 +4,8 @@ help:
 	@echo "clean            clean"
 	@echo "test             run test"
 	@echo "lint             run flake8 check"
+	@echo "db_migrate       "
+	@echo "db_upgrade       "
 
 server:
 	@python manager.py runserver -h 0.0.0.0 -r
@@ -31,4 +33,10 @@ lint:
 tests:
 	@py.test
 
-.PHONY: server shell clean clean-build clean-pyc lint tests
+db_migrate:
+	@python manager.py db migrate --message "${MSG}"
+
+db_upgrade:
+	@python manager.py db upgrade
+
+.PHONY: server shell clean clean-build clean-pyc lint tests db_migrate db_upgrade
