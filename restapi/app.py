@@ -68,6 +68,8 @@ def create_db():
 
 
 def register_blueprints(app):
+    from .views.project import bp
+    app.register_blueprint(bp, url_prefix='/projects')
     from .views.auto_api import bp
     app.register_blueprint(bp, url_prefix='/')
 

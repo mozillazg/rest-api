@@ -4,5 +4,6 @@ Flask-Migrate
 flask-restful
 Flask-Script
 Flask-SQLAlchemy
+Flask-WTF
 
 psycopg2

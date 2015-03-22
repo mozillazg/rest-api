@@ -16,6 +16,11 @@ class Project(db.Model, SessionMixin):
     updated_at = db.Column(db.DateTime, default=db.func.now(),
                            onupdate=db.func.now())
 
+    def __init__(self, title=None, urlname=None, description=None):
+        self.title = title
+        self.urlname = urlname
+        self.description = description
+
     def __str__(self):
         return self.title
 
@@ -42,6 +47,17 @@ class Api(db.Model, SessionMixin):
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(),
                            onupdate=db.func.now())
+
+    def __init__(self, title=None, url=None, verb='GET', status_code=200,
+                 arguments=None, headers=None, body=None, description=None):
+        self.title = title
+        self.url = url
+        self.verb = verb
+        self.status_code = status_code
+        self.arguments = arguments
+        self.headers = headers
+        self.body = body
+        self.description = description
 
     def __str__(self):
         return self.title

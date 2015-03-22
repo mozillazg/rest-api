@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "macro.html" import horizontal_field %}
+
+{% block title %}Edit Project{% endblock title %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Edit Project</h3>
+    </div>
+    <form class="form-horizontal panel-body" method="post" action="">
+      {{ form.csrf_token }}
+
+      {{ horizontal_field(form.title) }}
+      {{ horizontal_field(form.urlname) }}
+      {{ horizontal_field(form.description) }}
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn-primary btn">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock content %}
